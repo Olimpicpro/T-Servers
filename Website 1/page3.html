@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="Shortcut icon" href="Docs1/favicon-16x16.png" type="imagexicon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T Server</title>
+</head>
+<body>
+
+<center><textarea id="myTextarea" rows="10" cols="50"></textarea><br>
+<button style="background-color: lightgreen;color: white;border-color: lightgreen;border-radius: 5px;" onclick="saveText()">Save Text</button></center>
+
+<script>
+function saveText() {
+  var textToSave = document.getElementById("myTextarea").value;
+  var blob = new Blob([textToSave], {type: "text/plain"});
+  var anchor = document.createElement("a");
+  anchor.download = "myText.txt";
+  anchor.href = window.URL.createObjectURL(blob);
+  anchor.target ="_blank";
+  anchor.style.display = "none";
+  document.body.appendChild(anchor);
+  anchor.click();
+  document.body.removeChild(anchor);
+}
+</script>
+<center>
+    <br><br>
+    <button style="background-color: blue;color: white;border-radius: 5px;border-color: blue;" onclick="confirmAction()">Back To Home Page</button>
+    <script>
+        function confirmAction() {
+          var confirmation = confirm("Are you sure you want to proceed?-Project Wont be Saved!");
+          if (confirmation) {
+            window.location.href = "index.html"; // Redirect to index.html
+          } else {
+            // Here you can handle the cancel action or any other logic
+          }
+        }
+        </script>
+<br>
+<p>&copy;2024 T Server</p>
+</center>
+</body>
+</html>
